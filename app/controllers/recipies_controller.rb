@@ -16,7 +16,7 @@ class RecipiesController < ApplicationController
       flash[:success] = 'New recipe added successfully! =D'
       redirect_to '/recipies'
     else
-      flash[:error] = 'Sorry, something went wrong! >.<'
+      flash[:error] = @recipe.errors.full_messages
       redirect_to '/recipies/new'
     end
   end
