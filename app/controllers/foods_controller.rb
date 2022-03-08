@@ -5,6 +5,11 @@ class FoodsController < ApplicationController
     @foods = Food.all
   end
 
+  def destroy
+    @food.delete
+    redirect_to foods_path, notice: "#{@food.name} deleted successfully"
+  end
+
   private
 
   def set_food
