@@ -12,4 +12,6 @@ Rails.application.routes.draw do
   post '/recipies/:id/destroy', to: 'recipies#destroy'
     
   root "home#index"
+
+  resources :foods, except: %i[edit, update]
 end

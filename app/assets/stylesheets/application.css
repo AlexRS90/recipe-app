@@ -13,3 +13,22 @@
  *= require_tree .
  *= require_self
  */
+
+.right {
+  float: right;
+}
+
+.food_form_container {
+  padding: 20px;
+}
+
+.food_form {
+  width: 100%;
+  margin: 0 auto;
+}
+
+@media only screen and (min-width: 760px) {
+  .food_form {
+    width: 60%;
+  }
+}
