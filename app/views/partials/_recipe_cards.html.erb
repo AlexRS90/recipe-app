@@ -3,10 +3,11 @@
   <% @recipies.each do |food| %>
     <li>
       <div>
-        <p>food.name</p>
+        <p><%= food.name %></p>
         <p>Delete</p>
       </div>
-      <p>food.description</p>
+      <p><%= food.description %></p>
+      <p><%= food.public %></p>
     </li>
   <% end %>
 </ul>
