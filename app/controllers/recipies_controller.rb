@@ -21,6 +21,18 @@ class RecipiesController < ApplicationController
     end
   end
 
+  def destroy
+    @recipe = Recipe.find_by_id(params[:id])
+    if @recipe.destroy
+      flash[:success] = 'Recipe removed successfully =D'
+    else
+      flash[:error] = 'Error: Recipe could not be removed >.<'
+    end
+    redirect_to '/recipies'
+  end
+
+  private
+
   def recipe_params
     params.require(:data).permit(:name, :preparation, :cooking, :description, :public)
   end

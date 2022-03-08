@@ -7,6 +7,9 @@ Rails.application.routes.draw do
   get '/recipies', to: 'recipies#index', as: 'recipies'
   get '/recipies/new', to: 'recipies#new'
   post '/recipies/create', to: 'recipies#create', as: '/recipies/create'
+
+  get '/recipies/:id/destroy', to: 'recipies#destroy', as: '/recipies/destroy'
+  post '/recipies/:id/destroy', to: 'recipies#destroy'
     
   root "home#index"
 end
