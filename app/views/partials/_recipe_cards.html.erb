@@ -1,13 +1,15 @@
 <p>Recipies: </p>
 <ul>
   <% @recipies.each do |food| %>
-    <li>
-      <div>
-        <p><%= food.name %></p>
+    <li class="card text-white bg-success mb-3 .d-flex">
+      <div class="card-body">
+        <p class="card-title"><%= food.name %></p>
         <p>Delete</p>
       </div>
-      <p><%= food.description %></p>
-      <p><%= food.public %></p>
+      <div class="card-body">
+        <p class="card-text"><%= food.description %></p>
+        <p><%= food.public %></p>
+      </div>
     </li>
   <% end %>
 </ul>
