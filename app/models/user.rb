@@ -5,4 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   validates :name, presence: { message: 'must not be empty' }
+
+  has_many :recipes
 end
