@@ -1,0 +1,29 @@
+<div class="food_form_container">
+  <h2>Add Food</h2>
+  <%= form_with(model: @food, :html => {:class => 'food_form'}, url: foods_path, method: :post) do |f| %>
+
+    <% if @food.errors.any? %>
+      <div style="color: red">
+        <p><%= pluralize(@food.errors.count, "error") %> prohibited this friend from being saved:</p>
+        <ul>
+          <% @food.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="form-group mb-3">
+      <%= f.text_field :name, placeholder: "Rice", class: "form-control" %>
+    </div>
+    <div class="form-group mb-3">
+      <%= f.text_field :measurement_unit, placeholder: "grams", class: "form-control" %>
+    </div>
+    <div class="form-group mb-3">
+      <%= f.number_field :price, placeholder: "$10", class: "form-control" %>
+    </div>
+    <div class="form-group mb-3">
+      <%= f.submit class: "btn btn-primary" %>
+    </div>
+  <% end %>
+</div>

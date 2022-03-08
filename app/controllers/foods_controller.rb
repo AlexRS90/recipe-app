@@ -5,6 +5,20 @@ class FoodsController < ApplicationController
     @foods = Food.all
   end
 
+  def new
+    @food = Food.new
+  end
+
+  def create
+    @food = Food.new(food_params)
+    @food.user = current_user
+    if @food.save
+      redirect_to foods_path, notice: "#{@food.name} added successfully!"
+    else
+      render :new, status: :unprocessable_entity
+    end
+  end
+
   def destroy
     @food.delete
     redirect_to foods_path, notice: "#{@food.name} deleted successfully"
