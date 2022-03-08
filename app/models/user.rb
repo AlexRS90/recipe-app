@@ -7,4 +7,6 @@ class User < ApplicationRecord
   has_many :foods
 
   validates :name, presence: { message: 'must not be empty' }
+
+  has_many :recipes
 end
