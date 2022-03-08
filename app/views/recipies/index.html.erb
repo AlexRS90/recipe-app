@@ -1,2 +1,4 @@
-<h1>Recipies#index</h1>
-<p>Find me in app/views/recipies/index.html.erb</p>
+<%= render 'partials/flash' %>
+
+<%= link_to 'Add new Recipe', '/recipies/new' %>
+<%= render 'partials/recipe_cards', locals: { recipies: @recipeies }%>

@@ -1,0 +1,12 @@
+<p>Recipies: </p>
+<ul>
+  <% @recipies.each do |food| %>
+    <li>
+      <div>
+        <p>food.name</p>
+        <p>Delete</p>
+      </div>
+      <p>food.description</p>
+    </li>
+  <% end %>
+</ul>
