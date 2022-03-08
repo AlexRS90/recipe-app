@@ -10,8 +10,8 @@ class RecipiesController < ApplicationController
   def create
     user = current_user.id if current_user
     @recipe = Recipe.new(user_id: user, name: recipe_params[:name], preparation_time: recipe_params[:preparation],
-                        cooking_time: recipe_params[:cooking], description: recipe_params[:description],
-                        public: recipe_params[:public] == '1')
+                         cooking_time: recipe_params[:cooking], description: recipe_params[:description],
+                         public: recipe_params[:public] == '1')
     if @recipe.save
       flash[:success] = 'New recipe added successfully! =D'
       redirect_to '/recipies'
