@@ -7,9 +7,10 @@ class IngredientsController < ApplicationController
 
   def create
     recipe = Recipe.find_by_id(params[:id])
-    @ingredient = RecipeFood.new(recipe_id: recipe.id, food_id: ingredient_params[:food], quantity: ingredient_params[:quantity])
+    @ingredient = RecipeFood.new(recipe_id: recipe.id, food_id: ingredient_params[:food],
+                                 quantity: ingredient_params[:quantity])
     if @ingredient.save
-      flash[:success] = "New ingredient added succesfully! =D"
+      flash[:success] = 'New ingredient added succesfully! =D'
       redirect_to "/recipies/#{recipe.id}"
     else
       flash[:error] = @ingredient.errors.full_messages
@@ -21,7 +22,7 @@ class IngredientsController < ApplicationController
     recipe = Recipe.find(params[:id])
     @ingredient = RecipeFood.find_by_id(params[:ingredient_id])
     if @ingredient.destroy
-      flash[:success] = "Ingredient removed successfully =D"
+      flash[:success] = 'Ingredient removed successfully =D'
     else
       flash[:error] = 'Sorry, I can\'t removed it. =\'('
     end
