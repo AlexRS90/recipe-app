@@ -14,7 +14,10 @@
 
 <div class="d-flex justify-content-between">
   <p>Generate Shopping List</p>
-  <p>Add Ingredient</p>
+  <% if @owner == true %>
+    <%= link_to 'Add Food', '/foods' %>
+  <% end %>
+  <%= link_to 'Add Ingredient', "/recipies/#{@recipe.id}/ingredients/new" %>
 </div>
 <div class="bg-secondary h-2"><p class="text-secondary">pumas</p></div>
 <table class="table">
