@@ -20,9 +20,11 @@
   <%= link_to 'Add Ingredient', "/recipies/#{@recipe.id}/ingredients/new" %>
 </div>
 <div class="bg-secondary h-2"><p class="text-secondary">pumas</p></div>
+<%= render 'partials/flash' %>
 <table class="table">
   <thead>
     <tr>
+      <th scope="col">#</th>
       <th scope="col">Food</th>
       <th scope="col">Quantity</th>
       <th scope="col">Value</th>
@@ -30,22 +32,14 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td scope="row">1</td>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <td scope="row">2</td>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <td scope="row">3</td>
-      <td colspan="2">Larry the Bird</td>
-      <td>@twitter</td>
-    </tr>
+    <% @ingredients.each_with_index do |ingredient, index| %>
+      <tr>
+        <td scope="row"><%= index+=1 %></td>
+        <td><%= ingredient.name %></td>
+        <td><%= ingredient.recipe_foods.first.quantity %></td>
+        <td><%= ingredient.recipe_foods.first.quantity * ingredient.price %></td>
+        <td><%= button_to 'X', "/recipies/#{@recipe.id}/ingredients/#{ingredient.recipe_foods.first.id}/destroy", class: "btn btn-danger btn-sm" %></td>
+      </tr>
+    <% end %>
   </tbody>
 </table>

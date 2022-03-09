@@ -9,6 +9,7 @@ class RecipiesController < ApplicationController
 
   def show
     @recipe = Recipe.find_by_id(params[:id])
+    @ingredients = @recipe.foods
   end
 
   def create

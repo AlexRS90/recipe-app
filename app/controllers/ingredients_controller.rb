@@ -17,6 +17,17 @@ class IngredientsController < ApplicationController
     end
   end
 
+  def destroy
+    recipe = Recipe.find(params[:id])
+    @ingredient = RecipeFood.find_by_id(params[:ingredient_id])
+    if @ingredient.destroy
+      flash[:success] = "Ingredient removed successfully =D"
+    else
+      flash[:error] = 'Sorry, I can\'t removed it. =\'('
+    end
+    redirect_to "/recipies/#{recipe.id}"
+  end
+
   private
 
   def ingredient_params
