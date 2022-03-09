@@ -5,4 +5,6 @@ class Recipe < ApplicationRecord
   validates :description, presence: { message: 'How do I have to mix the ingredients? =S' }
 
   belongs_to :user
+  has_many :recipe_foods
+  has_many :foods, through: :recipe_foods
 end
