@@ -1,2 +1,12 @@
-<h1>Ingredients#new</h1>
-<p>Find me in app/views/ingredients/new.html.erb</p>
+<h2>Add ingredient for: </h2>
+<h3><%= @recipe.name %></h3>
+
+<%= form_with(model: @ingredient, url: "/recipies/#{@recipe.id}/ingredients/create", scope: :data) do |f| %>
+  <%= f.label(:food, 'Ingredient') %>
+  <%= f.select :food, @foods.map { |food| [food.name, food.id] }, {}, class: "form-control" %> <br>
+
+  <%= f.label(:quantity, 'How many do you need?') %>
+  <%= f.text_field :quantity, placeholder: 'Only Numbers', class: "form-control" %> <br>
+
+  <%= f.submit 'Save Ingredient', class: "btn btn-primary" %>
+<% end %>
