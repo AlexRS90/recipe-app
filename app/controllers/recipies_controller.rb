@@ -1,10 +1,14 @@
 class RecipiesController < ApplicationController
   def index
-    @recipies = Recipe.all
+    @recipies = Recipe.all.where(user_id: current_user.id)
   end
 
   def new
     @recipe = Recipe.new
+  end
+
+  def show
+    @recipe = Recipe.find_by_id(params[:id])
   end
 
   def create
@@ -17,7 +21,8 @@ class RecipiesController < ApplicationController
       redirect_to '/recipies'
     else
       flash[:error] = @recipe.errors.full_messages
-      redirect_to '/recipies/new'
+      render :new
+      # redirect_to '/recipies/new'
     end
   end
 
