@@ -1,0 +1,14 @@
+<article class="recipe-card">
+  <div class="card-left">
+    <p class="title"><%= recipe.name %></p>
+    <span class="owner"><%= recipe.user.name %></span>
+  </div>
+  <div class="card-right">
+    <p class="info">Total food items: <%= recipe.foods.count %></p>
+    <% total_price = 0 %>
+    <% recipe.foods.each do |food| %>
+      <% total_price += food.price %>
+    <% end %>
+    <p class="info">Total price: $<%= total_price %></p>
+  <div>
+</article>

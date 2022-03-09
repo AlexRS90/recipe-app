@@ -27,6 +27,26 @@
   margin: 0 auto;
 }
 
+.recipe-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.recipe-card {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px;
+  margin-bottom: 20px;
+  -webkit-box-shadow: 5px 5px 15px -10px #000;
+  box-shadow: 5px 5px 15px -10px #000;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: bold;
+}
+
 @media only screen and (min-width: 760px) {
   .food_form {
     width: 60%;
