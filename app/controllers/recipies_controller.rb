@@ -7,6 +7,10 @@ class RecipiesController < ApplicationController
     @recipe = Recipe.new
   end
 
+  def show
+    @recipe = Recipe.all.where(id: params[:id])
+  end
+
   def create
     user = current_user.id if current_user
     @recipe = Recipe.new(user_id: user, name: recipe_params[:name], preparation_time: recipe_params[:preparation],
