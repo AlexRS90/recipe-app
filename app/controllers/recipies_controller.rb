@@ -9,7 +9,7 @@ class RecipiesController < ApplicationController
 
   def show
     @recipe = Recipe.find_by_id(params[:id])
-    @owner = @recipe.user_id == current_user.id
+    # @owner = @recipe.user.id == current_user.id
   end
 
   def create
