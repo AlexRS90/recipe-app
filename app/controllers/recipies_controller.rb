@@ -7,6 +7,11 @@ class RecipiesController < ApplicationController
     @recipe = Recipe.new
   end
 
+  def show
+    @recipe = Recipe.find_by_id(params[:id])
+    @ingredients = @recipe.foods
+  end
+
   def create
     user = current_user.id if current_user
     @recipe = Recipe.new(user_id: user, name: recipe_params[:name], preparation_time: recipe_params[:preparation],
@@ -17,7 +22,8 @@ class RecipiesController < ApplicationController
       redirect_to '/recipies'
     else
       flash[:error] = @recipe.errors.full_messages
-      redirect_to '/recipies/new'
+      # redirect_to '/recipies/new'
+      render :new
     end
   end
 
