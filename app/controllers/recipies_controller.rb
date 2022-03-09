@@ -21,7 +21,8 @@ class RecipiesController < ApplicationController
       redirect_to '/recipies'
     else
       flash[:error] = @recipe.errors.full_messages
-      redirect_to '/recipies/new'
+      # redirect_to '/recipies/new'
+      render :new
     end
   end
 

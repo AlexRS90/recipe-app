@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   post '/recipies/create', to: 'recipies#create', as: '/recipies/create'
 
   get '/recipies/:id/ingredients/new', to: 'ingredients#new'
+  post '/recipies/:id/ingredients/create', to: 'ingredients#create'
 
   get '/recipies/:id/destroy', to: 'recipies#destroy', as: '/recipies/destroy'
   delete '/recipies/:id/destroy', to: 'recipies#destroy'
