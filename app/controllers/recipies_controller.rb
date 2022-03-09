@@ -8,7 +8,7 @@ class RecipiesController < ApplicationController
   end
 
   def show
-    @recipe = Recipe.all.where(id: params[:id])
+    @recipe = Recipe.find_by_id(params[:id])
   end
 
   def create
