@@ -1,4 +1,8 @@
 <%= render 'partials/flash' %>
 
-<%= link_to 'Add new Recipe', '/recipies/new' %>
-<%= render 'partials/recipe_cards', locals: { recipies: @recipeies }%>
+<%= link_to 'Add new Recipe', '/recipies/new', class: 'btn btn-primary mt-3 mb-3' %>
+<% if @recipies.any? %>
+  <%= render 'partials/recipe_cards', locals: { recipies: @recipeies }%>
+<% else %>
+  <h2>No recipes yet, let's add one</<h2>
+<% end %>

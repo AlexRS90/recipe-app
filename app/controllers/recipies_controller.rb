@@ -1,6 +1,6 @@
 class RecipiesController < ApplicationController
   def index
-    @recipies = Recipe.all
+    @recipies = current_user.recipes
   end
 
   def new
@@ -32,7 +32,7 @@ class RecipiesController < ApplicationController
     if @recipe.destroy
       flash[:success] = 'Recipe removed successfully =D'
     else
-      flash[:error] = 'Error: Recipe could not be removed >.<'
+      flash[:error] = 'Error: Recipe could not be removed =('
     end
     redirect_to '/recipies'
   end

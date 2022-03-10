@@ -10,6 +10,18 @@ Rails.application.routes.draw do
   get '/recipies/:id', to: 'recipies#show'
   post '/recipies/create', to: 'recipies#create', as: '/recipies/create'
 
+  get '/inventory', to: 'inventory#index'
+  post '/inventory/create', to: 'inventory#create'
+
+  get '/inventory/:inventory_id', to: 'inventory#show'
+  post '/inventory/:inventory_id', to: 'inventory#populate_inventory'
+
+  get '/inventory/:inventory_id/destroy', to: 'inventory#destroy'
+  delete '/inventory/:inventory_id/destroy', to: 'inventory#destroy'
+
+  get '/inventory/:inventory_id/:inv_food_id/destroy', to: 'inventory#destroy_populate'
+  post '/inventory/:inventory_id/:inv_food_id/destroy', to: 'inventory#destroy_populate'
+
   get '/recipies/:id/ingredients/new', to: 'ingredients#new'
   post '/recipies/:id/ingredients/create', to: 'ingredients#create'
 
