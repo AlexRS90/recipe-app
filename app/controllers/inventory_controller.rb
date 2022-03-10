@@ -13,11 +13,10 @@ class InventoryController < ApplicationController
     @inventory = Inventory.new(name: inventory_params[:name], user_id: current_user.id)
     if @inventory.save
       flash[:success] = "Awesome, now we can manage your #{inventory_params[:name]}'s inventory! =D"
-      redirect_to inventory_path
     else
       flash[:error] = @inventory.errors.full_messages
-      redirect_to inventory_path
     end
+    redirect_to inventory_path
   end
 
   def show
