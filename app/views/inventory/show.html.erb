@@ -7,10 +7,11 @@
   <%= f.select :food, @foods.map { |food| [food.name, food.id] }, {}, class: "form-control" %> <br>
   
   <%= f.label(:quantity, 'How many we have?') %>
-  <%= f.text_field :quantity, placeholder: 'Only Numbers', class: "form-control" %> <br>
+  <%= f.number_field :quantity, placeholder: 'Only Numbers', class: "form-control" %> <br>
   
   <%= f.submit 'Save Food', class: "btn btn-primary" %> <br>
 <% end %>
+<%= render 'partials/flash' %>
 <h2>Stock</h2>
 <table class="table">
   <thead>
