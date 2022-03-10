@@ -21,6 +21,32 @@ class InventoryController < ApplicationController
   end
 
   def show
+    @populate = InventoryFood.new
+    @inventory = Inventory.find_by_id(params[:inventory_id])
+    @foods = Food.where(user_id: current_user.id)
+    @inventory_foods = @inventory.foods
+  end
+
+  def populate_inventory
+    inventory = Inventory.find_by_id(params[:inventory_id])
+    @populate = InventoryFood.new(inventory_id: inventory.id, food_id: populate_params[:food],
+                                  quantity: populate_params[:quantity])
+    if @populate.save
+      flash[:success] = 'New food added succesfully =D'
+    else
+      flash[:error] = @populate.errors.full_messages
+    end
+    redirect_to "/inventory/#{inventory.id}"
+  end
+
+  def destroy_populate
+    @populate = InventoryFood.find_by_id(params[:inv_food_id])
+    if @populate.destroy
+      flash[:success] = 'Food removed successfully =D'
+    else
+      flash[:error] = 'Error: Food was not removed =('
+    end
+    redirect_to "/inventory/#{params[:inventory_id]}"
   end
 
   def destroy
@@ -37,5 +63,9 @@ class InventoryController < ApplicationController
 
   def inventory_params
     params.require(:data).permit(:name)
+  end
+
+  def populate_params
+    params.require(:data).permit(:food, :quantity)
   end
 end
