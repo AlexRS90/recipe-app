@@ -9,7 +9,7 @@
       <div class="card-body">
         <p class="card-text"><%= food.description %></p>
         <p><%= food.public == true ? 'Sharing Recipe' : 'Just for you' %></p>
-        <%= link_to 'See details', "/recipies/#{food.id}" %>
+        <%= link_to 'See details', "/recipies/#{food.id}", class: 'btn btn-primary' %>
       </div>
     </li>
   <% end %>
