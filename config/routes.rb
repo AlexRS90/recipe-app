@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     get '/users/sign_out' => 'devise/sessions#destroy'
   end
 
-  get 'shopping_list', to: 'shopping_list#index'
+  get '/recipies/:id/shopping_list', to: 'shopping_list#index'
   get 'public_recipe/public_recipies'
 
   get '/recipies', to: 'recipies#index', as: 'recipies'

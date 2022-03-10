@@ -14,7 +14,7 @@
 
 <div class="d-flex justify-content-around">
   <% if @ingredients.any? %>
-    <%= link_to 'Generate Shopping List', shopping_list_path, class: 'btn btn-primary mb-3' %>
+    <%= link_to 'Generate Shopping List', "/recipies/#{@recipe.id}/shopping_list", class: 'btn btn-primary mb-3' %>
   <% end %>
   <% if @owner == true %>
     <%= link_to 'Add Food', '/foods', class: 'btn btn-primary mb-3' %>
