@@ -10,7 +10,7 @@
 ✅ Created a new rails app. <br>
 ✅ Followed gitflow <br>
 ✅ Setup PostgreSQL database. <br>
-✅ Created a kanbanboard to track our progress
+✅ Created a kanbanboard to track our progress <br>
 ✅ The app has the following interfaces:
 
  - A login page.
