@@ -9,4 +9,5 @@ class User < ApplicationRecord
   validates :name, presence: { message: 'must not be empty' }
 
   has_many :recipes
+  has_many :inventories
 end
