@@ -3,7 +3,7 @@
 
 <% @to_pay = 0 %>
 <% @shopping_list.each do |item| %>
-  <% @to_pay += item[:cost] %>
+  <% @to_pay += item[:price] %>
 <% end %>
 
 <h4>Amount of items to buy: <%= @shopping_list.length %></h4>
@@ -22,9 +22,9 @@
     <% @shopping_list.each_with_index do |food, index| %>
     <tr>
       <th scope="row"><%= index + 1 %></th>
-      <td><%= food[:food_name] %></td>
-      <td><%= food[:missing_food] %></td>
-      <td><%= food[:cost] %></td>
+      <td><%= food[:food] %></td>
+      <td><%= food[:quantity] %></td>
+      <td><%= food[:price] %></td>
     </tr>
     <% end %>
   </tbody>
