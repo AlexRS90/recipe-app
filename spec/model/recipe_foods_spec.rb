@@ -1,18 +1,17 @@
 require 'rails_helper'
 
 RSpec.describe RecipeFood, type: :model do
-
   let(:user) do
     User.create!(name: 'Prom Prom', email: 'prom@gmail.com', password: '123456')
   end
 
   let(:recipe) do
     Recipe.create!(name: 'Beans and Plantain',
-               preparation_time: '60 mins',
-               cooking_time: '90 mins',
-               description: 'The best beans and plantain recipe',
-               public: true,
-               user: user)
+                   preparation_time: '60 mins',
+                   cooking_time: '90 mins',
+                   description: 'The best beans and plantain recipe',
+                   public: true,
+                   user: user)
   end
 
   let(:food) do
