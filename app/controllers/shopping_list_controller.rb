@@ -1,26 +1,32 @@
 class ShoppingListController < ApplicationController
   def index
     @recipe = Recipe.find_by_id(params[:id])
-    @ingredients = @recipe.foods.includes(:inventory_foods)
+    @ingredients = RecipeFood.where(recipe_id: params[:id]).includes(:food)
+    @inventories_food = InventoryFood.where(inventory_id: params[:inventory_id]).includes(:food)
     @shopping_list = []
+    
+    pp @inventory_food
+    pp @ingredients
+    @ingredients.each do |recipe|
+      flag = false
+      @inventories_food.each do |food|
+        
+        puts "New England"
+        puts food.quantity
+        next unless recipe.food_id == food.food_id
+        flag = true
+        
+        next unless recipe.quantity > food.quantity
+        
+        @shopping_list.push({food_name: food.food.name,
+                             missing_food: "#{recipe.quantity - food.quantity} #{recipe.food.measurement_unit}",
+                            cost: (recipe.quantity - food.quantity) * food.food.price})
+      end
+      next unless flag == false
+      @shopping_list.push({food_name: recipe.food.name,
+                           missing_food: "#{recipe.quantity} #{recipe.food.measurement_unit}",
+                           cost: recipe.quantity * recipe.food.price})
 
-    # @ingredients.each do |ingredient|
-    #   # if ingredient.inventory_foods.first.nil?
-    #   #   @shopping_list << ingredient
-    #   # end
-    #   # p ingredient.recipe_foods.first.quantity
-    #   # p ingredient.inventory_foods
-    #   # if ingredient.recipe_foods.first.quantity < ingredient.inventory_foods.first.quantity
-    #   #   @shopping_list << ingredient
-    #   # end
-    #   p 'THIS >>>', ingredient.inventory_foods.length
-
-    #   if ingredient.inventory_foods.length.zero?
-    #     @shopping_list << ingredient.name
-    #   # elsif ingredient.recipe_foods.first.quantity < ingredient.inventory_foods.first.quantity
-    #   #   @shopping_list << ingredient.name
-    #   end
-    # end
-    p @shopping_list
+    end
   end
 end

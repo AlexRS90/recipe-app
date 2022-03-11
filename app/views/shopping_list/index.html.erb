@@ -1,6 +1,13 @@
 <h2>Shopping List</h2>
-<%= @recipe %>
-<%= @ingredients %>
+
+
+<% @to_pay = 0 %>
+<% @shopping_list.each do |item| %>
+  <% @to_pay += item[:cost] %>
+<% end %>
+
+<h4>Amount of items to buy: <%= @shopping_list.length %></h4>
+<h4>Total value of food needed: <%= @to_pay %></h4>
 
 <table class="table">
   <thead>
@@ -12,11 +19,13 @@
     </tr>
   </thead>
   <tbody>
+    <% @shopping_list.each_with_index do |food, index| %>
     <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
+      <th scope="row"><%= index + 1 %></th>
+      <td><%= food[:food_name] %></td>
+      <td><%= food[:missing_food] %></td>
+      <td><%= food[:cost] %></td>
     </tr>
+    <% end %>
   </tbody>
 </table>
