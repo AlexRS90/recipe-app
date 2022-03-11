@@ -14,7 +14,7 @@
 
 #   context 'Elements on page inventory' do
 #     it 'Form displayed to create a new one' do
-      
+
 #       expect(page).to have_content("Welcome to our Recipes App")
 #     #   expect(page).to have_css('#data_name')
 #     end
@@ -23,9 +23,7 @@
 #     #   expect(page).to have_content(@users.first.name)
 #     # end
 
-   
 #   end
-
 
 # #   context 'User interaction of profile' do
 # #     it 'Click on a post and redirect me to its full page' do
