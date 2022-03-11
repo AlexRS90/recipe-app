@@ -13,8 +13,12 @@
 </div>
 
 <div class="d-flex justify-content-around">
-  <% if @ingredients.any? %>
-    <%= link_to 'Generate Shopping List', "/recipies/#{@recipe.id}/shopping_list", class: 'btn btn-primary mb-3' %>
+  <% if @inventory %>
+    <% if @ingredients.any? %>
+      <%= link_to 'Generate Shopping List', "/recipies/#{@recipe.id}/shopping_list", class: 'btn btn-primary mb-3' %>
+    <% end %>
+  <% else %>
+    <p>You do not have any inventory</p>
   <% end %>
   <% if @owner == true %>
     <%= link_to 'Add Food', '/foods', class: 'btn btn-primary mb-3' %>

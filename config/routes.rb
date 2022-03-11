@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   get '/recipies', to: 'recipies#index', as: 'recipies'
   get '/recipies/new', to: 'recipies#new'
-  get '/recipies/:id', to: 'recipies#show'
+  get '/recipies/:id', to: 'recipies#show', as: 'recipe'
   post '/recipies/create', to: 'recipies#create', as: '/recipies/create'
 
   get '/inventory', to: 'inventory#index'

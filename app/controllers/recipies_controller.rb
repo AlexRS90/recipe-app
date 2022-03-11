@@ -11,6 +11,7 @@ class RecipiesController < ApplicationController
     @recipe = Recipe.find_by_id(params[:id])
     @ingredients = @recipe.foods
     @owner = @recipe.user_id == current_user.id
+    @inventory = current_user.inventories.any?
   end
 
   def create

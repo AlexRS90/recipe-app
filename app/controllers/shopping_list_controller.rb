@@ -1,29 +1,31 @@
 class ShoppingListController < ApplicationController
   def index
-    @inventory = Inventory.find_by(user_id: current_user.id)
-    @recipe = Recipe.find_by_id(params[:id])
-    @ingredients = RecipeFood.where(recipe_id: params[:id]).includes(:food)
-    @inventories_food = InventoryFood.where(inventory_id: @inventory.id)
+    @recipe = Recipe.find(params[:id])
+    @recipe_foods = @recipe.recipe_foods.includes(:food)
+    @inventory = current_user.inventories.first
+    @inventory_foods = @inventory.inventory_foods.includes(:food)
     @shopping_list = []
 
-    @ingredients.each do |recipe|
-      flag = false
-      @inventories_food.each do |food|
-        next unless recipe.food_id == food.food_id
+    @recipe_foods.each do |recipe_food|
+      food_exists = false
 
-        flag = true
+      @inventory_foods.each do |inventory_food|
+        next unless recipe_food.food_id == inventory_food.food_id
 
-        next unless recipe.quantity > food.quantity
+        food_exists = true
 
-        @shopping_list.push({ food_name: food.food.name,
-                              missing_food: "#{recipe.quantity - food.quantity} #{recipe.food.measurement_unit}",
-                              cost: (recipe.quantity - food.quantity) * food.food.price })
+        next unless recipe_food.quantity > inventory_food.quantity
+
+        @shopping_list.push({ food: inventory_food.food.name,
+                              quantity: recipe_food.quantity - inventory_food.quantity,
+                              price: recipe_food.food.price * (recipe_food.quantity - inventory_food.quantity) })
       end
-      next unless flag == false
 
-      @shopping_list.push({ food_name: recipe.food.name,
-                            missing_food: "#{recipe.quantity} #{recipe.food.measurement_unit}",
-                            cost: recipe.quantity * recipe.food.price })
+      next if food_exists
+
+      @shopping_list.push({ food: recipe_food.food.name,
+                            quantity: recipe_food.quantity,
+                            price: recipe_food.food.price * recipe_food.quantity })
     end
   end
 end
