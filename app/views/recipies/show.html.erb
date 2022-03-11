@@ -18,7 +18,7 @@
       <%= link_to 'Generate Shopping List', "/recipies/#{@recipe.id}/shopping_list", class: 'btn btn-primary mb-3' %>
     <% end %>
   <% else %>
-    <p>You do not have any inventory</p>
+    <p class="badge bg-warning text-dark">You do not have any inventory yet!</p>
   <% end %>
   <% if @owner == true %>
     <%= link_to 'Add Food', '/foods', class: 'btn btn-primary mb-3' %>
