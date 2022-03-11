@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
-  get 'public_recipe/public_recipies'
   devise_for :users
   devise_scope :user do
     get '/users/sign_out' => 'devise/sessions#destroy'
   end
+
+  get '/recipies/:id/shopping_list', to: 'shopping_list#index'
+  get 'public_recipe/public_recipies'
 
   get '/recipies', to: 'recipies#index', as: 'recipies'
   get '/recipies/new', to: 'recipies#new'
