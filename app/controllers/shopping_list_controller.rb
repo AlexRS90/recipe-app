@@ -3,7 +3,7 @@ class ShoppingListController < ApplicationController
     @inventory = Inventory.find_by(user_id: current_user.id)
     @recipe = Recipe.find_by_id(params[:id])
     @ingredients = RecipeFood.where(recipe_id: params[:id]).includes(:food)
-    @inventories_food = InventoryFood.where(inventory_id: @inventory.id).includes(:food)
+    @inventories_food = InventoryFood.where(inventory_id: @inventory.id)
     @shopping_list = []
 
     @ingredients.each do |recipe|
