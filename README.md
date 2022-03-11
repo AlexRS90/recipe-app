@@ -52,7 +52,7 @@ To run the unit test once you did the above steps just write the following comma
 - Ruby
 - Terminal
 
-## Author
+## Authors
 
 👤 **Alejandro Ramos**
 
