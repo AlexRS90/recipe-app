@@ -1,4 +1,4 @@
-<h2>Inventory</h2>
+<h2 class="mt-3 mb-3">Inventory</h2>
 <%= render 'partials/flash' %>
 <% if @has_inv == true %>
   <div class="row">
@@ -14,9 +14,10 @@
   </div>
 <% else %>
   <%= form_with(model: @inventory, url: '/inventory/create', scope: :data) do |f| %>
-    <p>Looks like you don't have an inventory, let's create a new one =D</p>
-    <%# f.label(:name, 'Name:') %>
-    <%= f.text_field :name, class: "form-control", placeholder: 'How do you wanna name me?' %> <br>
-    <%= f.submit 'Save Inventory', class: "btn btn-primary" %>
+    <div class="food_form">
+      <p>Looks like you don't have an inventory, let's create a new one =D</p>
+      <%= f.text_field :name, class: "form-control", placeholder: 'How do you wanna name me?' %> <br>
+      <%= f.submit 'Save Inventory', class: "btn btn-primary" %>
+    </div>
   <% end %>
 <% end %>

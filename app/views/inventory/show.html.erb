@@ -1,18 +1,20 @@
-<h2><%= @inventory.name %></h2>
+<h2 class="mt-3 mb-3"><%= @inventory.name %></h2>
 
 <%= form_with(model: @populate, url: "/inventory/#{@inventory.id}", scope: :data) do |f| %>
-  <p>Let's add a food to our inventory!! =D</p>
-
-  <%= f.label(:food, 'Food') %>
-  <%= f.select :food, @foods.map { |food| [food.name, food.id] }, {}, class: "form-control" %> <br>
+  <div class="food_form">
+    <h3><span class="badge bg-success">Let's add a food to our inventory!! =D</span></h3> <br>
   
-  <%= f.label(:quantity, 'How many we have?') %>
-  <%= f.number_field :quantity, placeholder: 'Only Numbers', class: "form-control" %> <br>
-  
-  <%= f.submit 'Save Food', class: "btn btn-primary" %> <br>
+    <%= f.label(:food, 'Food') %>
+    <%= f.select :food, @foods.map { |food| [food.name, food.id] }, {}, class: "form-control" %> <br>
+    
+    <%= f.label(:quantity, 'How many we have?') %>
+    <%= f.number_field :quantity, placeholder: 'Only Numbers', class: "form-control" %> <br>
+    
+    <%= f.submit 'Save Food', class: "btn btn-primary" %> <br>
+  </div>
 <% end %>
 <%= render 'partials/flash' %>
-<h2>Stock</h2>
+<h2 class="mt-4">Stock</h2>
 <table class="table">
   <thead>
     <tr>

@@ -1,23 +1,18 @@
-<h1>Let's add a deliousus recipe <%= @user %> </h1>
+<h1 class="mb-3 mt-3">Let's add a deliousus recipe <%= @user %></h1>
 <%= render 'partials/flash' %>
 
 <%= form_with(model: @recipe, url: '/recipies/create', scope: :data) do |f| %>
-  <div>
-    <h2>Recipe: </h2>
-    <%= f.label(:name, "Recipe's name") %>
-    <%= f.text_field :name %> <br><br>
+  <div class="food_form form-group mb-3">
+    <%= f.text_field :name, placeholder: 'Recipe\'s Name', class: "form-control" %> <br><br>
 
-    <%= f.label(:preparation, "Preparation time") %>
-    <%= f.text_field :preparation %> <br><br>
+    <%= f.text_field :preparation, placeholder: "Preparation time", class: "form-control" %> <br><br>
 
-    <%= f.label(:cooking, "Cooking time") %>
-    <%= f.text_field :cooking %> <br><br>
+    <%= f.text_field :cooking, placeholder: "Cooking time", class: "form-control" %> <br><br>
 
-    <%= f.label(:description, "Recipe's instructions") %>
-    <%= f.text_area :description, size: '50x10'  %> <br><br>
+    <%= f.text_area :description, size: '50x10', placeholder: "Recipe's instructions", class: "form-control"  %> <br><br>
 
     <%= f.label(:public, 'Do you wanna share your recipe with others?') %>
-    <%= f.check_box :public %> <br><br>
+    <%= f.check_box :public, class: "form-check-input" %> <br><br>
+    <%= f.submit 'Save Recipe', class: "btn btn-primary -5" %>
   </div>
-  <%= f.submit 'Save Recipe' %>
 <% end %>
