@@ -1,0 +1,51 @@
+<h2><%= @recipe.name %></h2>
+<div class="d-flex justify-content-between">
+  <div>
+    <p>Preparation time: <%= @recipe.preparation_time %></p>
+    <p>Cooking time: <%= @recipe.cooking_time %></p>
+  </div>
+  <div>
+    <p> <%= @recipe.public == true ? 'Sharing Recipe' : 'Just for you!' %> </p>
+  </div>
+</div>
+<div>
+  <p><%= @recipe.description %></p>
+</div>
+
+<div class="d-flex justify-content-around">
+  <% if @inventory %>
+    <% if @ingredients.any? %>
+      <%= link_to 'Generate Shopping List', "/recipies/#{@recipe.id}/shopping_list", class: 'btn btn-primary mb-3' %>
+    <% end %>
+  <% else %>
+    <p class="badge bg-warning text-dark">You do not have any inventory yet!</p>
+  <% end %>
+  <% if @owner == true %>
+    <%= link_to 'Add Food', '/foods', class: 'btn btn-primary mb-3' %>
+  <% end %>
+  <%= link_to 'Add Ingredient', "/recipies/#{@recipe.id}/ingredients/new", class: 'btn btn-primary mb-3' %>
+</div>
+<div class="bg-secondary h-2"><p class="text-secondary">pumas</p></div>
+<%= render 'partials/flash' %>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Food</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Value</th>
+      <th scope="col">Remove</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @ingredients.each_with_index do |ingredient, index| %>
+      <tr>
+        <td scope="row"><%= index+=1 %></td>
+        <td><%= ingredient.name %></td>
+        <td><%= ingredient.recipe_foods.first.quantity %></td>
+        <td><%= ingredient.recipe_foods.first.quantity * ingredient.price %></td>
+        <td><%= button_to 'X', "/recipies/#{@recipe.id}/ingredients/#{ingredient.recipe_foods.first.id}/destroy", class: "btn btn-danger btn-sm" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

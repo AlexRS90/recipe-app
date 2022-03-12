@@ -1,0 +1,16 @@
+<p>Recipies: </p>
+<ul>
+  <% @recipies.each do |food| %>
+    <li class="card text-white bg-success mb-3 flex-row">
+      <div class="card-body">
+        <p class="card-title"><%= food.name %></p>
+        <%= link_to 'Remove', "/recipies/#{food.id}/destroy", method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger'%>
+      </div>
+      <div class="card-body">
+        <p class="card-text"><%= food.description %></p>
+        <p><%= food.public == true ? 'Sharing Recipe' : 'Just for you' %></p>
+        <%= link_to 'See details', "/recipies/#{food.id}", class: 'btn btn-primary' %>
+      </div>
+    </li>
+  <% end %>
+</ul>
