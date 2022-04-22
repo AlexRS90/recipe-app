@@ -66,8 +66,8 @@ To run the unit test once you did the above steps just write the following comma
 
 
 👤 Promise Eze<br>
-- GitHub: [@codepantherr](https://github.com/codepantherr)<br>
-- Twitter: [@codepantherr](https://twitter.com/codepantherr)<br>
+- GitHub: [@codepantha](https://github.com/codepantha)<br>
+- Twitter: [@codepantha](https://twitter.com/codepantha)<br>
 - LinkedIn: [@promise-eze](https://www.linkedin.com/in/promise-eze/)<br>
 
 ## 🤝 Contributing
